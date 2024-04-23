@@ -20,6 +20,7 @@ public:
         for (int i = 2; i <= n; i++) {
             log[i] = log[i / 2] + 1;
         }
+
         st.assign(n, vector<int>(max_log));
         for (int i = 0; i < n; i++) {
             st[i][0] = a[i];
@@ -44,37 +45,3 @@ public:
 };
 
 
-
-inline int read() {
-    int x = 0, f = 1;
-    char ch = getchar();
-    // 跳过前面的非数字字符，保留负号
-    while (ch < '0' || ch > '9') {
-        if (ch == '-') f = -1;
-        ch = getchar();
-    }
-    // 读取数字
-    while (ch >= '0' && ch <= '9') {
-        x = (x << 3) + (x << 1) + ch - '0';
-        ch = getchar();
-    }
-    return x * f;
-}
-
-
-int main() {
-    int n = read(), m = read();
-    vector<int> a(n);
-
-    for (int i = 0; i < n; ++i)
-        a[i] = read();
-
-    ST st(a);
-
-    while (m--) {
-        int l = read(), r = read();
-        int res = st.query(l - 1, r);
-        printf("%d\n", res);
-    }
-    return 0;
-}

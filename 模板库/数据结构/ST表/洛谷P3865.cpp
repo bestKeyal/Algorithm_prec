@@ -2,25 +2,20 @@
 
 using namespace std;
 
-// 索引从0开始
-class ST {
+template<typename T>
+class SparseTable {
 public:
-    // st[i][j] 对应的区间是 [i, i+2^j)
-    vector<vector<int>> st;
+    vector<vector<T>> st;
     vector<int> log;
 
-    // a的下标从0开始
-    ST(const vector<int> & a) {
+    SparseTable(const vector<T>& a) {
         int n = a.size();
-        // 获取n所占的比特位数。
         int max_log = 32 - __builtin_clz(n);
-
-        // 用log[i]代表log(2, i)的向上取整的对数值。
         log.assign(n + 1, 0);
         for (int i = 2; i <= n; i++) {
             log[i] = log[i / 2] + 1;
         }
-        st.assign(n, vector<int>(max_log));
+        st.assign(n, vector<T>(max_log));
         for (int i = 0; i < n; i++) {
             st[i][0] = a[i];
         }
@@ -31,19 +26,29 @@ public:
         }
     }
 
-    int Op(const int& a, const int& b) {
+    T Op(const T& a, const T& b) {
         // Define your operation here.
         return max(a, b);
     }
 
-    // Query 查询区间 [l,r)    0 <= l < r <= n
-    int query(int l, int r) { // exclusive of r
+    T query(int l, int r) { // exclusive of r
         int j = log[r - l];
         return Op(st[l][j], st[r - (1 << j)][j]);
     }
 };
 
+// For the index version, you will need a pair with value and index
+struct Pair {
+    int v, i;
+};
 
+template<>
+Pair SparseTable<Pair>::Op(const Pair& a, const Pair& b) {
+    if (a.v <= b.v) { // Change this comparison for max-query or others
+        return a;
+    }
+    return b;
+}
 
 inline int read() {
     int x = 0, f = 1;
@@ -61,20 +66,21 @@ inline int read() {
     return x * f;
 }
 
-
 int main() {
-    int n = read(), m = read();
+    int n, m;
+    scanf("%d %d", &n, &m);
     vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
 
-    for (int i = 0; i < n; ++i)
-        a[i] = read();
+    SparseTable<int> st(a);
 
-    ST st(a);
-
-    while (m--) {
-        int l = read(), r = read();
-        int res = st.query(l - 1, r);
-        printf("%d\n", res);
+    int l, r;
+    for (int i = 0; i < m; i++) {
+        scanf("%d %d", &l, &r);
+        // 注意：SparseTable中的r是独占的，所以无需像常规区间查询中一样减去1
+        printf("%d\n", st.query(l - 1, r));
     }
     return 0;
 }

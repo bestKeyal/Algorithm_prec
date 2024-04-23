@@ -1,10 +1,7 @@
 # ninja log v5
-4	3258	7344642527768396	CMakeFiles/Algorithm.dir/main.cpp.obj	d0c201dce91e546d
-3259	4576	7344642540906929	Algorithm.exe	9e4fe87c510f8aac
-0	643	7344659146993953	build.ninja	de2dfd03abcd38df
-3	1612	7344659163316907	CMakeFiles/Algorithm.dir/main.cpp.obj	d0c201dce91e546d
-1613	1736	7344659164520508	Algorithm.exe	9e4fe87c510f8aac
-2	1371	7344664146453376	CMakeFiles/Algorithm.dir/main.cpp.obj	d0c201dce91e546d
-1371	1482	7344664147556290	Algorithm.exe	9e4fe87c510f8aac
-3	1328	7344666545408115	CMakeFiles/Algorithm.dir/main.cpp.obj	d0c201dce91e546d
-1328	1451	7344666546608229	Algorithm.exe	9e4fe87c510f8aac
+13	1891	7344679118977874	CMakeFiles/Algorithm.dir/main.cpp.obj	d0c201dce91e546d
+1	193	7355654597013492	build.ninja	de2dfd03abcd38df
+4	1511	7355504055245324	CMakeFiles/main.dir/main.cpp.obj	9fbaa336c7dd87df
+4	1862	7344679118687825	CMakeFiles/Algorithm.dir/Template/字符串/字典树Trie/hdu1251.cpp.obj	246ce15c0825ed56
+1512	1670	7355504056859971	main.exe	b1b3b399f0c1f0fc
+4	1420	7355503622014510	CMakeFiles/main.dir/模板库/数据结构/树状数组/洛谷P3368树状数组2.cpp.obj	ce2682c8d651e2a4
