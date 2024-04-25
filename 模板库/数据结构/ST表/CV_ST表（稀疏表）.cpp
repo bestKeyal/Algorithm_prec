@@ -32,14 +32,15 @@ public:
         }
     }
 
+    // 信息维护方式（可选最大值，最小值等）
     int Op(const int& a, const int& b) {
-        // Define your operation here.
         return max(a, b);
     }
 
-    // Query 查询区间 [l,r)    0 <= l < r <= n
+    // 查询左闭右开区间 [l,r)    0 <= l < r <= n
     int query(int l, int r) { // exclusive of r
         int j = log[r - l];
+
         return Op(st[l][j], st[r - (1 << j)][j]);
     }
 };

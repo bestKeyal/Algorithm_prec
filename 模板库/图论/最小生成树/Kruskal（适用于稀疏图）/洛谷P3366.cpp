@@ -89,33 +89,33 @@ bool verify() {
     return true;
 }
 
-int main() {
-    n = read(), m = read();
-
-    for (int i = 1; i <= n; ++i) {
-        fa[i] = i;
-    }
-
-    for (int i = 0; i < m; ++i) {
-        int & from = edge[i].from;
-        int & to   = edge[i].to;
-        int & w    = edge[i].w;
-        from = read();
-        to = read();
-        w = read();
-        g[from][to] = 1;
-        g[to][from] = 1;
-
-    }
-
-    bool res = verify();
-    if (!res) {
-        printf("%s", "orz");
-        return 0;
-    }
-    kruskal();
-
-    printf("%d", ans);
-
-    return 0;
-}
+//int main() {
+//    n = read(), m = read();
+//
+//    for (int i = 1; i <= n; ++i) {
+//        fa[i] = i;
+//    }
+//
+//    for (int i = 0; i < m; ++i) {
+//        int & from = edge[i].from;
+//        int & to   = edge[i].to;
+//        int & w    = edge[i].w;
+//        from = read();
+//        to = read();
+//        w = read();
+//        g[from][to] = 1;
+//        g[to][from] = 1;
+//
+//    }
+//
+//    bool res = verify();
+//    if (!res) {
+//        printf("%s", "orz");
+//        return 0;
+//    }
+//    kruskal();
+//
+//    printf("%d", ans);
+//
+//    return 0;
+//}
